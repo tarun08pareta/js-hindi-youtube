@@ -45,3 +45,28 @@ console.log("hello world")
 }
 
 console.log(typeof myFunction )     // function ka type     object function hota h
+
+
+
+
+//**************************************************** */
+
+// Stack memory(Primitive )    and HEAP memory  (Non -Primitive )   
+
+let myYoutubename = "tarun08pareta"
+let anothermame = myYoutubename;
+
+anothermame ="chaiaurcode"
+// console.log(myYoutubename);
+// console.log(anothermame);
+
+
+let user ={
+    email : "usersjj@gmail.com",
+    upi:"user@ybl"
+}
+let userTwo =user;
+ userTwo.email ="tarun@.com";   /// user one se copy nhi reference milta h
+
+console.log(user.email)
+console.log(userTwo.email)    // dono me same hi value aayega reference lekar
