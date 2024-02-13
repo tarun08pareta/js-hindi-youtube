@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chai or code | DOM</title>
+</head>
+
+<body style="background-color: #575151 ; color: white;">
+    <ul class="language">
+        <li>java script</li>
+    </ul>
+</body>
+<script>
+    function addlanguage(lanName) {
+        const li = document.createElement('li')
+        li.innerHTML = `${lanName}`
+        document.querySelector('.language').appendChild(li)
+
+    }
+    addlanguage("python")
+    addlanguage("java")
+    addlanguage("c/c++")
+
+
+ // they are will be same process
+
+
+    function addOptiLanguae(lanName) {
+        const li = document.createElement('li')
+            
+            li.appendChild(document.createTextNode(lanName))
+            document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguae("ML")
+    addOptiLanguae("AI")
+
+
+    // EDIT
+
+    const secondLang = document.querySelector('li:nth-child(2)')
+    // secondLang.innerHTML="mojo"
+       const Newli = document.createElement('li')
+       Newli.textContent="mojo"
+       secondLang.replaceWith(Newli)
+
+       //edit
+       const firstLang =document.querySelector('li:first-child')
+       firstLang.outerHTML=' <li> type-Script</li>'
+
+// remove
+const lastlang = document.querySelector('li:last-child')
+lastlang.remove()
+
+</script>
+
+</html>
