@@ -1,10 +1,10 @@
 # JavaScript Learning Resources
 
-Welcome to the JavaScript Learning Resources repository! Here you'll find a comprehensive collection of resources to help you learn and master JavaScript.
 
-## YouTube Channel
 
-Explore our YouTube channel [CHAI OR CODE ]([https://www.youtube.com/jsmasterclass](https://www.youtube.com/watch?v=Hr5iLG7sUa0&list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37)) for in-depth tutorials and lectures on JavaScript. Our content is designed to cater to learners of all levels, from beginners to advanced programmers. We cover topics ranging from basic syntax to advanced frameworks, ensuring a well-rounded learning experience for everyone.
+## YouTube Channel 
+
+Explore this YouTube channel [CHAI OR CODE ]([https://www.youtube.com/jsmasterclass](https://www.youtube.com/watch?v=Hr5iLG7sUa0&list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37)) for in-depth tutorials and lectures on JavaScript. Our content is designed to cater to learners of all levels, from beginners to advanced programmers. We cover topics ranging from basic syntax to advanced frameworks, ensuring a well-rounded learning experience for everyone.
 
 ## Content Outline
 
