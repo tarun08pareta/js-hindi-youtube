@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>chai or code </h1>
+    <button id="stop">stop</button>
+</body>
+<script>
+    const saytarun= function(){
+        console.log('tarun pareta')
+    }
+
+    const changeName = function(){
+        document.querySelector('h1').innerHTML='best java script serise'
+    }
+    
+    const stop = setTimeout( changeName,3000)
+
+    
+    document.getElementById('stop').
+    addEventListener('click', function(){
+       clearTimeout(stop);
+       console.log('stopped');
+    })
+</script>
+</html>
