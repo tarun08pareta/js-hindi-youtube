@@ -23,23 +23,34 @@
 </body>
 
 <script>
-    const ApiREquestUrl = 'https://api.github.com/users/tarun08pareta'
-    const xhr = new XMLHttpRequest();
+    // Define the URL for the API request
+const ApiREquestUrl = 'https://api.github.com/users/tarun08pareta';
 
-    xhr.open('GET', ApiREquestUrl)
+// Create a new XMLHttpRequest object
+const xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function () {
-        console.log(xhr.readyState)
-        if (xhr.readyState === 4) {
-            // const data = this.responseText
+// Open a GET request to the API URL
+xhr.open('GET', ApiREquestUrl);
 
-
-            const data = JSON.parse(this.responseText)
-            console.log(typeof data)
-            console.log(data)
-        }
+// Define a function to handle changes in the request state
+xhr.onreadystatechange = function () {
+    // Log the current state of the request
+    console.log(xhr.readyState);
+    
+    // Check if the request is complete (readyState = 4)
+    if (xhr.readyState === 4) {
+        // Parse the response text into a JavaScript object
+        const data = JSON.parse(this.responseText);
+        
+        // Log the type and content of the parsed data
+        console.log(typeof data);
+        console.log(data);
     }
-    xhr.send();
+}
+
+// Send the XMLHttpRequest
+xhr.send();
+
 
 
 
@@ -66,49 +77,63 @@
     //  })
 
 
-    document.querySelector('#button').addEventListener('click', function () {
-            const apiUrl = 'https://api.github.com/users/tarun08pareta';
-            const xhr = new XMLHttpRequest();
+    // Add event listener to the button with id 'button'
+document.querySelector('#button').addEventListener('click', function () {
+    // Define the URL for the API request
+    const apiUrl = 'https://api.github.com/users/tarun08pareta';
 
-            xhr.open('GET', apiUrl);
+    // Create a new XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
 
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    const data = JSON.parse(xhr.responseText);
-                    const avatarUrl = data.avatar_url;
-                    const followersCount = data.followers;
-                    const login = data.login;
+    // Open a GET request to the API URL
+    xhr.open('GET', apiUrl);
 
-                    // Check if user info already exists
-                    let userInfo = document.querySelector('.user-info');
-                    if (!userInfo.querySelector('img')) {
-                        // Create img element if it doesn't exist
-                        let img = document.createElement('img');
-                        img.src = avatarUrl;
-                        userInfo.appendChild(img);
-                    } else {
-                        // Update img src if it already exists
-                        userInfo.querySelector('img').src = avatarUrl;
-                    }
+    // Define a function to handle changes in the request state
+    xhr.onreadystatechange = function () {
+        // Check if the request is complete (readyState = 4) and the status is OK (status = 200)
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Parse the response text into a JavaScript object
+            const data = JSON.parse(xhr.responseText);
+            
+            // Extract necessary information from the response
+            const avatarUrl = data.avatar_url;
+            const followersCount = data.followers;
+            const login = data.login;
 
-                    // Check if followers count already exists
-                    if (!userInfo.querySelector('#followers')) {
-                        // Create p element for followers count
-                        let followers = document.createElement('p');
-                        followers.id = 'followers';
-                        followers.textContent = 'Followers: ' + followersCount;
-                        userInfo.appendChild(followers);
-                    } else {
-                        // Update followers count if it already exists
-                        userInfo.querySelector('#followers').textContent = 'Followers: ' + followersCount;
-                    }
+            // Get the user-info container
+            let userInfo = document.querySelector('.user-info');
 
-                   
-                }
+            // Check if img element already exists
+            if (!userInfo.querySelector('img')) {
+                // Create img element if it doesn't exist
+                let img = document.createElement('img');
+                img.src = avatarUrl;
+                userInfo.appendChild(img);
+            } else {
+                // Update img src if it already exists
+                userInfo.querySelector('img').src = avatarUrl;
             }
 
-            xhr.send();
-        });
+            // Check if followers count already exists
+            if (!userInfo.querySelector('#followers')) {
+                // Create p element for followers count
+                let followers = document.createElement('p');
+                followers.id = 'followers';
+                followers.textContent = 'Followers: ' + followersCount;
+                userInfo.appendChild(followers);
+            } else {
+                // Update followers count if it already exists
+                userInfo.querySelector('#followers').textContent = 'Followers: ' + followersCount;
+            }
+
+            // You can similarly handle 'login' information here if needed
+        }
+    }
+
+    // Send the XMLHttpRequest
+    xhr.send();
+});
+
 </script>
 
 </html>
