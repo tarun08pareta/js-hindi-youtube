@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: bisque; color: rgb(10, 124, 225);">
+    Value State Description
+    0 UNSENT Client has been created. open() not called yet.
+    1 OPENED open() has been called.
+    2 HEADERS_RECEIVED send() has been called, and headers and status are available.
+    3 LOADING Downloading; responseText holds partial data.
+    4 DONE The operation is complete.
+
+    <div class="user-info" style="width: auto;">
+
+    </div>
+    <button id="button">click</button>
+
+</body>
+
+<script>
+    const ApiREquestUrl = 'https://api.github.com/users/tarun08pareta'
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', ApiREquestUrl)
+
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState)
+        if (xhr.readyState === 4) {
+            // const data = this.responseText
+
+
+            const data = JSON.parse(this.responseText)
+            console.log(typeof data)
+            console.log(data)
+        }
+    }
+    xhr.send();
+
+
+
+
+    // const div = document.querySelector('.div')
+    // document.querySelector('#button').addEventListener('click', function () {
+    //     const ApiREquestUrl = 'https://api.github.com/users/tarun08pareta'
+    // const xhr = new XMLHttpRequest();
+
+    // xhr.open('GET', ApiREquestUrl)
+
+    // xhr.onreadystatechange = function () {
+    //     console.log(xhr.readyState)
+    //     if (xhr.readyState === 4) {
+    //         // const data = this.responseText
+
+    //     //    div.innerHTML= <img src="avatar_url"></img>
+    //         const data = JSON.parse(this.responseText)
+    //         console.log(typeof data)
+    //         console.log(data)
+    //     }
+    // }
+    // xhr.send();
+    //  })
+
+
+    document.querySelector('#button').addEventListener('click', function () {
+            const apiUrl = 'https://api.github.com/users/tarun08pareta';
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('GET', apiUrl);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    const avatarUrl = data.avatar_url;
+                    const followersCount = data.followers;
+                    const login = data.login;
+
+                    // Check if user info already exists
+                    let userInfo = document.querySelector('.user-info');
+                    if (!userInfo.querySelector('img')) {
+                        // Create img element if it doesn't exist
+                        let img = document.createElement('img');
+                        img.src = avatarUrl;
+                        userInfo.appendChild(img);
+                    } else {
+                        // Update img src if it already exists
+                        userInfo.querySelector('img').src = avatarUrl;
+                    }
+
+                    // Check if followers count already exists
+                    if (!userInfo.querySelector('#followers')) {
+                        // Create p element for followers count
+                        let followers = document.createElement('p');
+                        followers.id = 'followers';
+                        followers.textContent = 'Followers: ' + followersCount;
+                        userInfo.appendChild(followers);
+                    } else {
+                        // Update followers count if it already exists
+                        userInfo.querySelector('#followers').textContent = 'Followers: ' + followersCount;
+                    }
+
+                   
+                }
+            }
+
+            xhr.send();
+        });
+</script>
+
+</html>
